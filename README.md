@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Create React App [![CircleCI](https://circleci.com/gh/skp96/Wine-O-Inventory-Frontend.svg?style=svg)](https://circleci.com/gh/skp96/Wine-O-Inventory-Frontend)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
