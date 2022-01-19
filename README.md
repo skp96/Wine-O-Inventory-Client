@@ -15,7 +15,7 @@ This repository contains the source code for Wine-O Inventory's frontend. The co
 
 ```
 $ git clone https://github.com/skp96/Wine-O-Inventory-Frontend.git
-$ cd Wine-O-Inventory-Frontend
+$ cd Wine-O-Inventory-Client
 ```
 
 2. Install dependencies
