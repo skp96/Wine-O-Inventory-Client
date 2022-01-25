@@ -9,7 +9,7 @@ const defaultProps = {
 
 test('renders a title', () => {
   const { getByText } = render(<WineList {...defaultProps}/>)
-  expect(getByText(/list of wines/i)).toBeInTheDocument()
+  expect(getByText(/wine inventory/i)).toBeInTheDocument()
 });
 
 test('renders a wine item', () => {

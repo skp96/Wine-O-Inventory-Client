@@ -17,7 +17,7 @@ export const WineList: React.FC<{
 
     return (
         <>
-            <h2>List of Wines</h2>
+            <h2 role='show-inventory'>Wine Inventory</h2>
             <div>
                 {renderWinesList()}
             </div>
