@@ -16,19 +16,19 @@ test('renders loading while component fetches data', () => {
 })
 
 test('fetches and displays a wine list', async () => {
-    const { getByRole } = render(<App />)
+    const { getByTestId } = render(<App />)
 
-    await waitFor(() => getByRole('show-inventory'))
+    await waitFor(() => getByTestId('show-inventory'))
 
-    expect(getByRole('show-inventory')).toHaveTextContent(/wine inventory/i)
+    expect(getByTestId('show-inventory')).toHaveTextContent(/wine inventory/i)
 })
 
 test('displays an error when unable to fetch wines', async () => {
     server.use(errorHandler)
 
-    const { getByRole } = render(<App />)   
+    const { getByTestId } = render(<App />)   
 
-    await waitFor(() => getByRole('error'))
+    await waitFor(() => getByTestId('error'))
 
-    expect(getByRole('error')).toHaveTextContent(/unable to fetch data, please try again/i)
+    expect(getByTestId('error')).toHaveTextContent(/unable to fetch data, please try again/i)
 })

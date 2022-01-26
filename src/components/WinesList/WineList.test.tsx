@@ -13,21 +13,21 @@ test('renders a title', () => {
 });
 
 test('renders a wine item', () => {
-  const fakeWinesList: Wine[] = [{ id: 1, name: "test wine", description: "test wine", rating: 1, quantity: 1 }]
+  const fakeWinesList: Wine[] = [{ id: 1, name: "test wine", description: "test wine description", rating: 1, quantity: 1 }]
   const { getByText } = render(<WineList winesList={fakeWinesList} />)
 
-  expect(getByText(/test wine/i)).toBeInTheDocument()
+  expect(getByText("test wine")).toBeInTheDocument()
 })
 
 test('renders a list of wine items', () => {
   const fakeWinesList: Wine[] = [
-    { id: 1, name: "test wine", description: "test wine", rating: 1, quantity: 1 },
-    { id: 2, name: "another test", description: "another test", rating: 2, quantity: 2 }
+    { id: 1, name: "test wine", description: "test wine description", rating: 1, quantity: 1 },
+    { id: 2, name: "another test", description: "another test description", rating: 2, quantity: 2 }
   ]
   const { getByText } = render(<WineList winesList={fakeWinesList} />)
   
-  expect(getByText(/test wine/i)).toBeInTheDocument()
-  expect(getByText(/another test/i)).toBeInTheDocument()
+  expect(getByText("test wine")).toBeInTheDocument()
+  expect(getByText("another test")).toBeInTheDocument()
 })
 
 test('renders a message when list of wine items is empty', () => {

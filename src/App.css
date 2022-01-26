@@ -1,38 +1,94 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+
+.data-grid-container {
+  height: 500px;
+  width: 65vw;
+}
+
+.error-tyle {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: red;
+  align-items: center;
+}
+
+.title-welcome {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 1rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.loading,
+.title-inventory {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1rem;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.MuiDataGrid-row {
+  color: white;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  color: white;
+}
+
+.MuiTablePagination-displayedRows {
+  color: white;
+}
+
+.MuiSvgIcon-root {
+  color: white;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .title-welcome {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .title-inventory {
+    font-size: 2rem;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .title-welcome {
+    font-size: 3rem;
+  }
+  .title-inventory {
+    font-size: 2rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .title-welcome {
+    font-size: 4rem;
+  }
+  .title-inventory {
+    font-size: 3rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .title-welcome {
+    font-size: 5rem;
+  }
+  .title-inventory {
+    font-size: 4rem;
   }
 }

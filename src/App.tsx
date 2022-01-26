@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+import './normalize.css'
 import { Wine } from './interfaces/wine_interface';
-import { WineList } from './components/WinesList/WineList';
-import { fetchAllWines } from './api/wine_api';
+import { WineList } from './components/WinesList/WineList'
+import { fetchAllWines } from './api/wine_api'
 
 const App = () => {
   const [wines, setWines] = useState<Wine[]>([])
@@ -31,17 +32,18 @@ const App = () => {
 
   const renderComponentOrError = () => {
     if (error) {
-      return <h2 role='error'>{error}</h2>
+      return <h2 data-testid='error' className='error-style'>{error}</h2>
     }
     return <WineList winesList={wines} />
   }
   
   return (
     <div className="App">
+      <h1 className="title-welcome">Welcome to Wine-O Inventory</h1>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <h1 className='loading'>Loading...</h1>
       ) : (
-          renderComponentOrError()
+        renderComponentOrError()
       )}
     </div>
   );
