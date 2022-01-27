@@ -9,12 +9,6 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-test('renders loading while component fetches data', () => {
-    const { getByText } = render(<App />)
-
-    expect(getByText(/loading.../i)).toBeInTheDocument
-})
-
 test('fetches and displays a wine list', async () => {
     const { getByTestId } = render(<App />)
 

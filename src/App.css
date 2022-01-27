@@ -13,9 +13,10 @@
   width: 65vw;
 }
 
-.error-tyle {
+.error-style {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  font-size: 1.5rem;
   color: red;
   align-items: center;
 }
@@ -29,7 +30,8 @@
 }
 
 .loading,
-.title-inventory {
+.title-inventory,
+.empty-list {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -58,7 +60,13 @@
   .title-welcome {
     font-size: 2.5rem;
   }
-  .title-inventory {
+
+  .title-inventory,
+  .empty-list {
+    font-size: 2rem;
+  }
+
+  .error-style {
     font-size: 2rem;
   }
 }
@@ -68,7 +76,13 @@
   .title-welcome {
     font-size: 3rem;
   }
-  .title-inventory {
+
+  .title-inventory,
+  .empty-list {
+    font-size: 2rem;
+  }
+
+  .error-style {
     font-size: 2rem;
   }
 }
@@ -78,8 +92,14 @@
   .title-welcome {
     font-size: 4rem;
   }
-  .title-inventory {
+
+  .title-inventory,
+  .empty-list {
     font-size: 3rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
   }
 }
 
@@ -88,7 +108,13 @@
   .title-welcome {
     font-size: 5rem;
   }
-  .title-inventory {
+
+  .title-inventory,
+  .empty-list {
     font-size: 4rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
   }
 }

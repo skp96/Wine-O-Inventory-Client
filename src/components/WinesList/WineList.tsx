@@ -1,10 +1,12 @@
 import React from 'react'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import { Error } from '../Error/Error'
 import { Wine } from '../../interfaces/wine_interface'
 
 export const WineList: React.FC<{
-    winesList: Wine[]
-}> = ({ winesList }) => {
+    winesList: Wine[],
+    error: string
+}> = ({ winesList, error }) => {
 
     const columns: GridColDef[] = [
         {
@@ -47,6 +49,7 @@ export const WineList: React.FC<{
     return (
         <>  
             <h2 data-testid="show-inventory" className="title-inventory">Wine Inventory</h2>
+            {error && <Error error={error} /> }
             {winesList.length ? (
                 <div className='data-grid-container'>
                     <DataGrid
@@ -58,7 +61,7 @@ export const WineList: React.FC<{
                     />
                 </div>
             ): (
-                <h2>List is empty!</h2>
+                null
             )}
         </>
     )

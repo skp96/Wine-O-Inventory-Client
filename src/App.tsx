@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import './App.css';
-import './normalize.css'
-import { Wine } from './interfaces/wine_interface';
+import './reset-css.css'
+import { Wine } from './interfaces/wine_interface'
 import { WineList } from './components/WinesList/WineList'
+import { Loading } from './components/Loading/Loading'
+import { Error } from './components/Error/Error'
+import { Title } from './components/Title/Title'
 import { fetchAllWines } from './api/wine_api'
 
 const App = () => {
@@ -30,21 +33,17 @@ const App = () => {
     }
   }, [])
 
-  const renderComponentOrError = () => {
-    if (error) {
-      return <h2 data-testid='error' className='error-style'>{error}</h2>
-    }
-    return <WineList winesList={wines} />
-  }
+  // const renderComponentOrError = () => {
+  //   if (error) {
+  //     return <h2 data-testid='error' className='error-style'>{error}</h2>
+  //   }
+  //   return <WineList winesList={wines} />
+  // }
   
   return (
     <div className="App">
-      <h1 className="title-welcome">Welcome to Wine-O Inventory</h1>
-      {isLoading ? (
-        <h1 className='loading'>Loading...</h1>
-      ) : (
-        renderComponentOrError()
-      )}
+      <Title />
+      {isLoading ? ( <Loading /> ) : ( <WineList winesList={wines} error={error} /> )}
     </div>
   );
 }

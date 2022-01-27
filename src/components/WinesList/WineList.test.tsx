@@ -4,7 +4,8 @@ import { Wine } from '../../interfaces/wine_interface';
 
 
 const defaultProps = {
-  winesList: []
+  winesList: [],
+  error: ""
 }
 
 test('renders a title', () => {
@@ -14,7 +15,7 @@ test('renders a title', () => {
 
 test('renders a wine item', () => {
   const fakeWinesList: Wine[] = [{ id: 1, name: "test wine", description: "test wine description", rating: 1, quantity: 1 }]
-  const { getByText } = render(<WineList winesList={fakeWinesList} />)
+  const { getByText } = render(<WineList winesList={fakeWinesList} error={""} />)
 
   expect(getByText("test wine")).toBeInTheDocument()
 })
@@ -24,15 +25,8 @@ test('renders a list of wine items', () => {
     { id: 1, name: "test wine", description: "test wine description", rating: 1, quantity: 1 },
     { id: 2, name: "another test", description: "another test description", rating: 2, quantity: 2 }
   ]
-  const { getByText } = render(<WineList winesList={fakeWinesList} />)
+  const { getByText } = render(<WineList winesList={fakeWinesList} error={""} />)
   
   expect(getByText("test wine")).toBeInTheDocument()
   expect(getByText("another test")).toBeInTheDocument()
-})
-
-test('renders a message when list of wine items is empty', () => {
-  const winesList: Wine[] = []
-  const { getByText } = render(<WineList winesList={winesList} />)
-
-  expect(getByText(/list is empty!/i)).toBeInTheDocument()
 })
