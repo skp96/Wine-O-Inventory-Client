@@ -1,9 +1,28 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, waitFor } from "@testing-library/react"
+import { setupServer } from "msw/node"
+import { getWinesHandler, errorHandler } from "./mocks/handlers"
+import App from "./App"
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+const server = setupServer(getWinesHandler)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+
+test('fetches and displays a wine list', async () => {
+    const { getByTestId } = render(<App />)
+
+    await waitFor(() => getByTestId('show-inventory'))
+
+    expect(getByTestId('show-inventory')).toHaveTextContent(/wine inventory/i)
+})
+
+test('displays an error when unable to fetch wines', async () => {
+    server.use(errorHandler)
+
+    const { getByTestId } = render(<App />)   
+
+    await waitFor(() => getByTestId('error'))
+
+    expect(getByTestId('error')).toHaveTextContent(/unable to fetch data, please try again/i)
+})
