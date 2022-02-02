@@ -62,8 +62,12 @@
   transform: translate(-50%, -50%);
   width: 500px;
   background-color: whitesmoke;
-  border: 2px solid, black;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
+  padding: 2rem;
+}
+
+.error-list {
+  list-style: disc;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

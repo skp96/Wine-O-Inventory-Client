@@ -38,7 +38,6 @@ const App = () => {
       <Title />
       { !error ? (<CrudContainer />) : null}
       {isLoading ? (<Loading />) : (<WineList winesList={wines} error={error} />)}
-      
     </div>
   );
 }
