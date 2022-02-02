@@ -26,3 +26,13 @@ test('displays an error when unable to fetch wines', async () => {
 
     expect(getByTestId('error')).toHaveTextContent(/unable to fetch data, please try again/i)
 })
+
+test('when there is an error, inventory options are unavailable', async () => {
+    server.use(errorHandler)
+
+    const { queryByText } = render(<App />)   
+
+    await waitFor(() => {
+        expect(queryByText("Add")).not.toBeInTheDocument()
+    })
+})

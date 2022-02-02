@@ -16,7 +16,7 @@
 .error-style {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: red;
   align-items: center;
 }
@@ -24,7 +24,7 @@
 .title-welcome {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem;
   color: white;
 }
@@ -53,6 +53,17 @@
 
 .MuiSvgIcon-root {
   color: white;
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: whitesmoke;
+  border: 2px solid, black;
+  border-radius: 0.5rem;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
