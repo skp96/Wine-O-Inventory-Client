@@ -1,9 +1,10 @@
 import { render, waitFor } from "@testing-library/react"
 import { setupServer } from "msw/node"
-import { getWinesHandler, errorHandler } from "./mocks/handlers"
+import { getWinesHandler, errorHandler, postWinesHandler } from "./mocks/handlers"
+import userEvent from '@testing-library/user-event'
 import App from "./App"
 
-const server = setupServer(getWinesHandler)
+const server = setupServer(getWinesHandler, postWinesHandler)
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
@@ -35,4 +36,25 @@ test('when there is an error, inventory options are unavailable', async () => {
     await waitFor(() => {
         expect(queryByText("Add")).not.toBeInTheDocument()
     })
+})
+
+test('upon successfully creating of a wine, it is added to the list of wines and rendered', async () => {
+    const { getByText, findAllByRole, getByTestId } = render(<App />)
+
+    await waitFor(() => getByTestId('show-inventory'))
+
+    userEvent.click(getByText('Add'))
+
+    userEvent.type(getByTestId("form-name-id"), "test wine")
+    userEvent.type(getByTestId("form-description-id"), "test wine")
+    userEvent.type(getByTestId("form-rating-id"), "1")
+    userEvent.type(getByTestId("form-quantity-id"), "1")
+
+    userEvent.click(getByText("Submit"))
+
+    await waitFor(() => getByTestId("submit-success-id"))
+
+    userEvent.click(getByText("Close"))
+
+    expect(await findAllByRole('row')).toHaveLength(3)
 })

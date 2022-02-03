@@ -2,21 +2,27 @@ import { render, waitFor } from "@testing-library/react"
 import { CrudContainer } from "./CrudContainer"
 import userEvent from '@testing-library/user-event'
 
+const default_props = {
+    wines: [],
+    setWines: () => []
+}
+
+
 test(`displays an Add button`, () => {
-    const { getByText } = render(<CrudContainer />)
+    const { getByText } = render(<CrudContainer {...default_props}/>)
 
     expect(getByText("Add")).toBeInTheDocument()
 })
 
 test('click Add button renders a modal', () => {
-    const { getByText, getByTestId } = render(<CrudContainer />)
+    const { getByText, getByTestId } = render(<CrudContainer  {...default_props} />)
 
     userEvent.click(getByText('Add'))
     expect(getByTestId("add-modal-id")).toBeInTheDocument()
 })
 
 test('open modal renders a close button', () => {
-    const { getByText } = render(<CrudContainer />)
+    const { getByText } = render(<CrudContainer  {...default_props} />)
     
     userEvent.click(getByText('Add'))
 
@@ -24,7 +30,7 @@ test('open modal renders a close button', () => {
 })
 
 test('clicking close button in open modal closes the modal', async () => {
-    const { getByText, queryByText } = render(<CrudContainer />)
+    const { getByText, queryByText } = render(<CrudContainer  {...default_props}/>)
 
     userEvent.click(getByText('Add'))
 
@@ -36,7 +42,7 @@ test('clicking close button in open modal closes the modal', async () => {
 })
 
 test("closing a populated form and reopening results in an empty form", () => {
-    const { getByTestId, getByText } = render(<CrudContainer />)
+    const { getByTestId, getByText } = render(<CrudContainer  {...default_props}/>)
 
     userEvent.click(getByText("Add"))
     

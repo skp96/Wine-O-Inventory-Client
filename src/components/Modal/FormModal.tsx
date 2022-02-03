@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import { Modal } from '@mui/material'
 import { Box } from '@mui/system'
 import Button from '@mui/material/Button'
-import { WineData} from '../../interfaces/wine_interface'
+import {Wine, WineData} from '../../interfaces/wine_interface'
 
 export const FormModal: React.FC<{
   openAddModal: boolean,
   handleCloseAddModal: () => void
   header: string
   createWine: (wineData: WineData) => Promise<any>
-}> = ({ openAddModal, handleCloseAddModal, header, createWine }) => {
+  updateWinesList: (wine: Wine) => void
+}> = ({ openAddModal, handleCloseAddModal, header, createWine, updateWinesList }) => {
 
   const [wineValues, setWineValues] = useState<WineData>({
     name: "",
@@ -28,6 +29,7 @@ export const FormModal: React.FC<{
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     await createWine(wineValues).then(response => {
+      updateWinesList(response.data.attributes)
       setWineValues({ name: "", description: "", rating: 0, quantity: 0 })
       setMessage("Successfully added a wine!")
     })

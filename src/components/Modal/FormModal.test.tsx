@@ -4,13 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { createWine } from "../../mocks/api_mock"
 import { setupServer } from "msw/node"
 import { error422Handler } from "../../mocks/handlers"
+import { Wine } from "../../interfaces/wine_interface"
 
 const default_props_for_add = {
     openAddModal: true,
     handleCloseAddModal: () => false,
     header: "Add Your Wine Below:",
-    createWine: createWine
-
+    createWine: createWine,
+    updateWinesList: (wine: Wine) => null
 }
 
 test("displays a header to add a wine", () => {
