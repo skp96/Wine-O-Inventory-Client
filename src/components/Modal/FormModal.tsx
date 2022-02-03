@@ -61,13 +61,15 @@ export const FormModal: React.FC<{
   return (
     <Modal data-testid="add-modal-id" open={openAddModal} onClose={handleCloseModal}>
       <Box className="modal-box">
-        <h2>{header}</h2>
-        {message ? (<p data-testid='submit-success-id'>{message}</p>) : null}
-        {errors ? (<ol className='error-list' data-testid='submit-error-id'>{renderErrors()}</ol>) : null}
+        <div className='form-head-section'>
+          <h2 className="form-header">{header}</h2>
+          {message ? (<p data-testid='submit-success-id'>{message}</p>) : null}
+          {errors ? (<ol className='error-list' data-testid='submit-error-id'>{renderErrors()}</ol>) : null}
+        </div>
         <div className='form'>
           <form data-testid="form-id" onSubmit={handleSubmit}>
             <div className='form-row'>
-              <label>Name:</label>
+              <label className='form-label'>Name:</label>
               <input
                 type='text'
                 placeholder='Enter your name here'
@@ -77,7 +79,7 @@ export const FormModal: React.FC<{
                 data-testid='form-name-id' />
             </div>
             <div className='form-row'>
-              <label>Description:</label>
+              <label className='form-label'>Description:</label>
               <input
                 type='text'
                 placeholder='Enter a description'
@@ -87,7 +89,7 @@ export const FormModal: React.FC<{
                 data-testid='form-description-id' />
             </div>
             <div className='form-row'>
-              <label>Rating:</label>
+              <label className='form-label'>Rating:</label>
               <input
                 type='number'
                 min='0'
@@ -98,8 +100,8 @@ export const FormModal: React.FC<{
                 onChange={onChange}
                 data-testid='form-rating-id' />
             </div>
-            <div>
-              <label>Quantity:</label>
+            <div className='form-row'>
+              <label className='form-label'>Quantity:</label>
               <input
                 type='number'
                 min='0'
@@ -109,11 +111,11 @@ export const FormModal: React.FC<{
                 onChange={onChange}
                 data-testid='form-quantity-id' />
             </div>
-            <Button  type='submit' variant='outlined'>Submit</Button>
+            <div className='form-buttons'>
+              <Button type='submit' variant='outlined'>Submit</Button>
+              <Button variant='outlined' onClick={handleCloseModal}>Close</Button>
+            </div>
           </form>
-        </div>
-        <div className='form-buttons'>
-          <Button variant='outlined' onClick={handleCloseModal}>Close</Button>
         </div>
       </Box>
     </Modal>
