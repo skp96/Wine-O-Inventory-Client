@@ -36,9 +36,8 @@ const App = () => {
   return (
     <div className="App">
       <Title />
-      { !error ? (<CrudContainer />) : null}
+      {!error ? (<CrudContainer wines={wines} setWines={setWines}/>) : null}
       {isLoading ? (<Loading />) : (<WineList winesList={wines} error={error} />)}
-      
     </div>
   );
 }
