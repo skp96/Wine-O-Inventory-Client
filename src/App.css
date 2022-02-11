@@ -16,7 +16,7 @@
 .error-style {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: red;
   align-items: center;
 }
@@ -24,7 +24,7 @@
 .title-welcome {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem;
   color: white;
 }
@@ -55,6 +55,54 @@
   color: white;
 }
 
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 275px;
+  background-color: whitesmoke;
+  border-radius: 0.3rem;
+  padding: 2rem;
+}
+
+.error-list {
+  list-style: disc;
+}
+
+.form-head-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.form-header {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0.5rem;
+}
+
+.form-label {
+  font-family: "Roboto", sans-serif;
+}
+
+input {
+  font-family: "Roboto", sans-serif;
+  height: 1.5rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .title-welcome {
@@ -68,6 +116,10 @@
 
   .error-style {
     font-size: 2rem;
+  }
+
+  .modal-box {
+    width: 450px;
   }
 }
 
@@ -84,6 +136,10 @@
 
   .error-style {
     font-size: 2rem;
+  }
+
+  .modal-box {
+    width: 500px;
   }
 }
 

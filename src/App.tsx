@@ -4,9 +4,9 @@ import './reset-css.css'
 import { Wine } from './interfaces/wine_interface'
 import { WineList } from './components/WinesList/WineList'
 import { Loading } from './components/Loading/Loading'
-import { Error } from './components/Error/Error'
 import { Title } from './components/Title/Title'
 import { fetchAllWines } from './api/wine_api'
+import { CrudContainer } from './components/CrudContainer/CrudContainer';
 
 const App = () => {
   const [wines, setWines] = useState<Wine[]>([])
@@ -31,19 +31,13 @@ const App = () => {
       setIsLoading(true)
       setError("")
     }
-  }, [])
-
-  // const renderComponentOrError = () => {
-  //   if (error) {
-  //     return <h2 data-testid='error' className='error-style'>{error}</h2>
-  //   }
-  //   return <WineList winesList={wines} />
-  // }
+  },[])
   
   return (
     <div className="App">
       <Title />
-      {isLoading ? ( <Loading /> ) : ( <WineList winesList={wines} error={error} /> )}
+      {!error ? (<CrudContainer wines={wines} setWines={setWines}/>) : null}
+      {isLoading ? (<Loading />) : (<WineList winesList={wines} error={error} />)}
     </div>
   );
 }
